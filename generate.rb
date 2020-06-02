@@ -9,6 +9,7 @@ class Generate
 
   def generate
     run "mkdir -p public/cities"
+    run "mkdir -p public/imgs"
     run "cp -r css public"
     run "cp -r js public"
 
@@ -17,6 +18,11 @@ class Generate
     Dir["html/cities/*"].each do |city|
       city.gsub!("html/", "")
       page_in_template city
+    end
+
+    Dir["imgs/*"].each do |img|
+      newimg = "public/" + img
+      run "convert -scale 15% #{img} #{newimg}"
     end
   end
 
