@@ -1,3 +1,5 @@
+require 'kramdown'
+
 class Generate
   def initialize opts={}
     @opts = opts
@@ -25,7 +27,11 @@ class Generate
   def page_in_template src, dst=nil
     dst ||= src
     contents = File.read("html/" + src)
-    File.write("public/#{dst}", @template.gsub("{{content}}", contents))
+
+    final = Kramdown::Document.new(contents).to_html
+    final = @template.gsub("{{content}}", final)
+
+    File.write("public/#{dst}", final)
   end
 end
 
