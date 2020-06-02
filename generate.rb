@@ -4,6 +4,7 @@ class Generate
   def initialize opts={}
     @opts = opts
     @template = File.read "html/template.html"
+    @template = File.read "html/template.html"
   end
 
   def generate
@@ -30,8 +31,24 @@ class Generate
 
     final = Kramdown::Document.new(contents).to_html
     final = @template.gsub("{{content}}", final)
+    final = final.gsub("{{navigation}}", navigation)
 
     File.write("public/#{dst}", final)
+  end
+
+  def navigation
+    return @navigation if @navigation
+    @navigation = ""
+    Dir["html/cities/*"].each do |city|
+      city = File.basename(city, ".html")
+      cityname = city.gsub("_", " ").split.map(&:capitalize).join(" ")
+      @navigation += %{
+      <li class="nav-item">
+        <a class="nav-link" href="cities/#{city}.html">#{cityname}</a>
+      </li>
+      }
+    end
+    @navigation
   end
 end
 

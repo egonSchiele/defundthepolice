@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/main.css" />
     <script src="js/main.js"></script>
   </head>
 
   <body>
-    {{content}}
+    <div class="container-fluid">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Defund The Police</a>
+        </li>
+        {{navigation}}
+      </ul>
+    </div>
+    <div class="container-fluid">
+      {{content}}
+    </div>
   </body>
 </html>
