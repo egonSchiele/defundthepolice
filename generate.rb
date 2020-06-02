@@ -8,16 +8,16 @@ class Generate
   end
 
   def generate
-    run "mkdir -p public/cities"
+    run "mkdir -p public/pages"
     run "mkdir -p public/imgs"
     run "cp -r css public"
     run "cp -r js public"
 
     page_in_template "index.html"
 
-    Dir["html/cities/*"].each do |city|
-      city.gsub!("html/", "")
-      page_in_template city
+    Dir["html/pages/*"].each do |page|
+      page.gsub!("html/", "")
+      page_in_template page
     end
 
     Dir["imgs/*"].each do |img|
@@ -45,12 +45,12 @@ class Generate
   def navigation
     return @navigation if @navigation
     @navigation = ""
-    Dir["html/cities/*"].each do |city|
-      city = File.basename(city, ".html")
-      cityname = city.gsub("_", " ").split.map(&:capitalize).join(" ")
+    Dir["html/pages/*"].each do |page|
+      page = File.basename(page, ".html")
+      pagename = page.gsub("_", " ").split.map(&:capitalize).join(" ")
       @navigation += %{
       <li class="">
-        <a class="" href="cities/#{city}.html">#{cityname}</a>
+        <a class="" href="pages/#{page}.html">#{pagename}</a>
       </li>
       }
     end
