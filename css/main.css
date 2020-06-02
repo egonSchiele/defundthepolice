@@ -1,3 +1,42 @@
-body {
-    font-family: Georgia;
+* {
+    font-family: Georgia !important;
+    font-weight: normal;
+}
+
+.nav {
+    border-bottom: 1px solid black;
+}
+
+.nav ul {
+    padding: 0px;
+}
+
+.nav li {
+list-style-type: none;
+padding: 4px 7px;
+float: left;
+text-decoration: none;
+}
+
+.nav li a {
+text-decoration: none;
+}
+
+.nav li:hover, .nav li.title:hover {
+    background-color: #829FD9;
+    color: white;
+}
+
+.nav li.title {
+    background-color: #230A59;
+    color: white;
+}
+
+.nav li.title a {
+color: white;
+}
+
+.container {
+    background-color: white;
+    padding: 10px;
 }

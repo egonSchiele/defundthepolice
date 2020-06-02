@@ -43,8 +43,8 @@ class Generate
       city = File.basename(city, ".html")
       cityname = city.gsub("_", " ").split.map(&:capitalize).join(" ")
       @navigation += %{
-      <li class="nav-item">
-        <a class="nav-link" href="cities/#{city}.html">#{cityname}</a>
+      <li class="">
+        <a class="" href="cities/#{city}.html">#{cityname}</a>
       </li>
       }
     end
