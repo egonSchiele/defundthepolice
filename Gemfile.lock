@@ -1,13 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    kramdown (1.17.0)
+    kramdown (2.3.0)
+      rexml
+    rexml (3.2.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  kramdown (~> 1.11, >= 1.11.1)
+  kramdown (~> 2.3)
 
 BUNDLED WITH
    2.0.2
